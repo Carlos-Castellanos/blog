@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/list.css' %}" />
+{% endblock link %}
+{% block title %}Post{% endblock title %}
+
+{% block content %}
+
+<h1>Posts</h1>
+{% if request.user.is_authenticated %}
+<a href="{% url 'post_new' %}" class="btn btn-primary">New Post</a>
+{% endif %}
+<br />
+<br />
+
+{% for post in post_list %}
+
+<div class="card mb-3 ">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img class="img-fluid rounded-start" src="{% static 'img/AIFA1.jpg' %}" alt="My image">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ post.subtitle }}</h6>
+                <p class="card-text">{{ post.body|truncatechars:500 }}</p>
+
+            </div>
+        </div>
+        <div class="card-footer bg-transparent border-success">
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'post_edit' pk=post.id %}" class="btn btn-success"> Edit</a>
+            <a href="{% url 'post_delete' pk=post.id %}" class="btn btn-danger"> Delete </a>
+            {% endif %}
+            <a href="{% url 'post_detail' pk=post.id %}"> Continue reading...</a>
+        </div>
+    </div>
+</div>
+
+
+
+{% endfor %}
+
+{% endblock content %}
+
+
+<!-- <li class="list-group-item list-group-item-secondary ">{{ post.title }}</li> -->

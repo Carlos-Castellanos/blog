@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}" />
+{% endblock link %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+<div id="about">
+    <h1>About me </h1>
+
+    <img src="{% static 'images/charly.jpeg' %}" height="90" alt="My image">
+    <h3>The anonymous message board allows you to create a free communication between different users while protecting
+        their
+        identity, we hope you find it helpful.</h3>
+    <p>Developed by calc.inc 2022</p>
+</div>
+
+{% endblock content %}

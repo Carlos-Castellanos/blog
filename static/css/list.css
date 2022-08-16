@@ -1,0 +1,13 @@
+.flex-container {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.boxcard {
+    max-width: 28rem;
+    margin-top: 10px;
+    margin-left: 10px;
+}
